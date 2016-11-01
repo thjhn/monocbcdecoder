@@ -15,7 +15,12 @@
 # You should have received a copy of the GNU General Public License
 # along with monocbcdecoder.  If not, see <http://www.gnu.org/licenses/>.
 
-all: wordbook.o evaluations.o codehandler.o monocbcdecoder.c
+all: monocbcdecoder monocbcrandomencoder
+
+monocbcrandomencoder:
+	gcc -std=c99 -o monocbcrandomencoder monocbcrandomencoder.c
+
+monocbcdecoder: wordbook.o evaluations.o codehandler.o monocbcdecoder.c
 	gcc -std=c99 -o monocbcdecoder monocbcdecoder.c wordbook.o evaluations.o codehandler.o
 
 wordbook.o: wordbook.c
